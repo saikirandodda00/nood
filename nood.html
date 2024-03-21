@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Theme Messages</title>
+  <style>
+    body {
+        background-color: #000;
+        font-family: 'Courier New', Courier, monospace;
+        overflow: hidden;
+        margin: 0;
+      }
+      
+      .terminal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #0F0F0F;
+        background-color: #000;
+        overflow-y: auto;
+      }
+      
+      .terminal-header {
+        background-color: #333;
+        height: 30px;
+      }
+      
+      .terminal-body {
+        padding: 20px;
+        color: #00FF00;
+        scroll-behavior: smooth; /* Auto-scroll behavior */
+        animation: glitch 1s infinite;
+      }
+      
+      .terminal-body p {
+        margin: 5px 0;
+        line-height: 1.5;
+      }
+      
+      @keyframes glitch {
+        2%, 64% {
+          transform: translate(2px, 0) skew(0deg);
+        }
+        4%, 60% {
+          transform: translate(-2px, 0) skew(0deg);
+        }
+        62% {
+          transform: translate(0, 0) skew(5deg);
+        }
+      }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-header">
+      <span class="button red"></span>
+      <span class="button yellow"></span>
+      <span class="button green"></span>
+    </div>
+    <div class="terminal-body" id="terminal-body">
+      <!-- Messages will appear here -->
+    </div>
+  </div>
+
+  <script>
+    const terminalBody = document.getElementById('terminal-body');
+
+    const messages = [
+    "noodles, you're like a software update - always improving!",
+    "noodles, you're the WiFi to my internet connection - always reliable.",
+    "noodles, you're the NaN to my parseInt - always unexpected.",
+    "noodles, you're the Python to my print statement - always making things clearer.",
+    "noodles, you're the Ctrl to my C - always there when I need you.",
+
+    "noodles, you're the Unicode to my ASCII - always adding more depth.",
+    "noodles, you're the compiler to my code - always helping me run smoothly.",
+    "noodles, you're the SQL to my database - always managing my queries.",
+    "noodles, you're the Ruby to my Rails - always bringing elegance to chaos.",
+    "noodles, you're the pointer to my memory - always directing me right.",
+    "noodles, you're the noodle in my soup - irreplaceable!",
+    "noodles, you're the NaN to my parseFloat - a bit unpredictable!",
+    "noodles, you're the kernel to my OS - essential!",
+    "noodles, you're the RAM to my computer - always helping me remember.",
+    "noodles, you're the packet to my network - always transmitting my love.",
+    "noodles, you're the firewall to my security - always protecting me.",
+    "noodles, you're the binary to my machine - together, we're a perfect match!",
+    "noodles, you're the cookie to my website - always remembering me.",
+    "noodles, you're the render to my engine - always bringing things to life.",
+    "noodles, you're the interrupt to my process - always getting my attention.",
+    "noodles, you're the debug to my error - always helping me out.",
+    "noodles, you're the clock to my CPU - always keeping me on time.",
+    "noodles, you're the API to my application - always providing access.",
+    "noodles, you're the hash to my function - always adding security.",
+    "noodles, you're the branch to my repository - always branching out.",
+    "noodles, you're the loop to my code - we keep coming back to each other.",
+    "noodles, you're the source to my code - without you, I'm lost.",
+    "noodles, you're the URL to my web browser - always leading me to new adventures.",
+    "noodles, you're the API to my interface - always providing a connection.",
+    "noodles, you're the float to my integer - together, we're versatile!",
+    "noodles, you're the shell to my terminal - always running things smoothly.",
+    "noodles, you're the function to my code - always doing your part.",
+    "noodles, you're the bit to my byte - together, we make sense.",
+    "noodles, you're the loopback to my IP - always coming back to you.",
+    "noodles, you're the Ethernet to my LAN - always connected.",
+    "noodles, you're the BIOS to my computer - you keep me alive!",
+    "noodles, you're the QWERTY to my keyboard - always in the right place.",
+    "noodles, you're the click to my mouse - always making things happen.",
+    "noodles, you're the pixel to my screen - without you, I'm incomplete.",
+    "noodles, you're the cache to my memory - always keeping things fast.",
+    "noodles, you're the operator to my operand - we make a great team!",
+    "noodles, you're the logic to my gate - always making things work.",
+    "noodles, you're the server to my client - always responding.",
+    "noodles, you're the hub to my network - always connecting us.",
+    "noodles, you're the ACK to my SYN - always confirming our connection.",
+    "noodles, you're the loop to my link - always keeping us together.",
+    "noodles, you're the codec to my audio - always making my life sound better.",
+    "noodles, you're the admin to my system - always in control.",
+    "noodles, you're the port to my service - always open for me.",
+    "noodles, you're the branch to my repository - always branching out.",
+    "noodles, you're the extension to my file - always expanding my capabilities.",
+    "noodles, you're the framework to my code - always providing structure.",
+    "noodles, you're the interpreter to my language - always understanding me.",
+    "noodles, you're the suite to my test - always making sure things work.",
+    "noodles, you're the logic to my circuit - always making sense.",
+    "noodles, you're the debug to my code - always helping me fix my mistakes.",
+    "noodles, you're the interrupt to my process - always keeping me on my toes.",
+    "noodles, you're the pointer to my function - always directing me right.",
+    "noodles, you're the header to my packet - always leading the way.",
+    "noodles, you're the script to my page - always making things dynamic.",
+    "noodles, you're the stack to my memory - always keeping things organized.",
+    "noodles, you're the timestamp to my log - always marking our moments.",
+    "noodles, you're the hash to my table - always keeping things secure.",
+    "noodles, you're the branch to my repository - always branching out.",
+    "noodles, you're the extension to my file - always expanding my capabilities.",
+    "noodles, you're the framework to my code - always providing structure.",
+    "noodles, you're the interpreter to my language - always understanding me",
+    "noodles, you're the pixel to my canvas - always adding color to my life.",
+"noodles, you're the queue to my data structure - always lining up for me.",
+"noodles, you're the gateway to my network - always opening doors.",
+"noodles, you're the vector to my graphic - always pointing me in the right direction.",
+"noodles, you're the adapter to my interface - always making connections.",
+"noodles, you're the hyperlink to my webpage - always leading me somewhere new.",
+"noodles, you're the loop to my condition - always keeping me going.",
+"noodles, you're the version to my control - always keeping me up to date.",
+"noodles, you're the syntax to my language - always making sense of things.",
+"noodles, you're the machine to my learning - always helping me grow.",
+"noodles, you're the variable to my function - always changing things up.",
+"noodles, you're the boot to my system - always getting me started.",
+"noodles, you're the protocol to my communication - always making sure we're understood.",
+"noodles, you're the node to my graph - always connecting us.",
+"noodles, you're the batch to my processing - always handling things in bulk.",
+"noodles, you're the pointer to my structure - always pointing me in the right direction.",
+"noodles, you're the monitor to my system - always keeping an eye on things.",
+"noodles, you're the logic to my language - always making things work.",
+"noodles, you're the fingerprint to my security - always authenticating me.",
+"noodles, you're the cookie to my website - always remembering me.",
+"noodles, you're the render to my engine - always bringing things to life.",
+"noodles, you're the interrupt to my process - always getting my attention.",
+"noodles, you're the debug to my error - always helping me out.",
+"noodles, you're the clock to my CPU - always keeping me on time.",
+"noodles, you're the BIOS to my computer - you keep me alive!",
+      "noodles, you're the QWERTY to my keyboard - always in the right place.",
+      "noodles, you're the click to my mouse - always making things happen.",
+      "noodles, you're the pixel to my screen - without you, I'm incomplete.",
+      "noodles, you're the cache to my memory - always keeping things fast.",
+      "noodles, you're the operator to my operand - we make a great team!",
+      "noodles, you're the logic to my gate - always making things work.",
+      "noodles, you're the server to my client - always responding.",
+      "noodles, you're the hub to my network - always connecting us.",
+      "noodles, you're the ACK to my SYN - always confirming our connection.",
+      "noodles, you're the loop to my link - always keeping us together.",
+      "noodles, you're the codec to my audio - always making my life sound better.",
+      "noodles, you're the admin to my system - always in control.",
+      "noodles, you're the port to my service - always open for me.",
+      "noodles, you're the branch to my repository - always branching out.",
+      "noodles, you're the extension to my file - always expanding my capabilities.",
+      "noodles, you're the framework to my code - always providing structure.",
+      "noodles, you're the interpreter to my language - always understanding me.",
+      "noodles, you're the suite to my test - always making sure things work.",
+      "noodles, you're the logic to my circuit - always making sense.",
+      "noodles, you're the debug to my code - always helping me fix my mistakes.",
+      "noodles, you're the interrupt to my process - always keeping me on my toes.",
+      "noodles, you're the pointer to my function - always directing me right.",
+      "noodles, you're the header to my packet - always leading the way.",
+      "noodles, you're the script to my page - always making things dynamic.",
+      "noodles, you're the stack to my memory - always keeping things organized.",
+      "noodles, you're the timestamp to my log - always marking our moments.",
+      "noodles, you're the hash to my table - always keeping things secure.",
+      "noodles, you're the pixel to my canvas - always adding color to my life.",
+      "noodles, you're the queue to my data structure - always lining up for me.",
+      "noodles, you're the gateway to my network - always opening doors.",
+      "noodles, you're the vector to my graphic - always pointing me in the right direction.",
+      "noodles, you're the adapter to my interface - always making connections.",
+      "noodles, you're the hyperlink to my webpage - always leading me somewhere new.",
+      "noodles, you're the loop to my condition - always keeping me going.",
+      "noodles, you're the version to my control - always keeping me up to date.",
+      "noodles, you're the syntax to my language - always making sense of things.",
+      "noodles, you're the machine to my learning - always helping me grow.",
+      "noodles, you're the variable to my function - always changing things up.",
+      "noodles, you're the boot to my system - always getting me started.",
+      "noodles, you're the protocol to my communication - always making sure we're understood.",
+      "noodles, you're the node to my graph - always connecting us.",
+      "noodles, you're the batch to my processing - always handling things in bulk.",
+      "noodles, you're the pointer to my structure - always pointing me in the right direction.",
+      "noodles, you're the monitor to my system - always keeping an eye on things.",
+      "noodles, you're the logic to my language - always making things work.",
+      "noodles, you're the fingerprint to my security - always authenticating me.",
+      "noodles, you're the cookie to my website - always remembering me.",
+      "noodles, you're the render to my engine - always bringing things to life.",
+      "noodles, you're the interrupt to my process - always getting my attention.",
+      "noodles, you're the debug to my error - always helping me out.",
+      "noodles, you're the clock to my CPU - always keeping me on time.",
+      "noodles, you're the API to my application - always providing access.",
+      "noodles, you're the hash to my function - always adding security.",
+      "noodles, you're the branch to my repository - always branching out.",
+      "noodles, you're the loop to my code - we keep coming back to each other.",
+      "noodles, you're the source to my code - without you, I'm lost.",
+      "noodles, you're the URL to my web browser - always leading me to new adventures.",
+      "noodles, you're the API to my interface - always providing a connection.",
+      "noodles, you're the float to my integer - together, we're versatile!",
+      "noodles, you're the shell to my terminal - always running things smoothly.",
+      "noodles, you're the function to my code - always doing your part.",
+      "noodles, you're the bit to my byte - together, we make sense.",
+      "noodles, you're the loopback to my IP - always coming back to you.",
+      "noodles, you're the Ethernet to my LAN - always connected.",
+      "noodles, you're the BIOS to my computer - you keep me alive!",
+      "noodles, you're the QWERTY to my keyboard - always in the right place.",
+      "noodles, you're the click to my mouse - always making things happen.",
+      "noodles, you're the pixel to my screen - without you, I'm incomplete.",
+      "noodles, you're the cache to my memory - always keeping things fast.",
+      "noodles, you're the operator to my operand - we make a great team!",
+      "noodles, you're the logic to my gate - always making things work.",
+      "noodles, you're the server to my client - always responding.",
+      "noodles, you're the hub to my network - always connecting us.",
+      "noodles, you're the ACK to my SYN - always confirming our connection.",
+      "noodles, you're the loop to my link - always keeping us together.",
+      "noodles, you're the codec to my audio - always making my life sound better.",
+      "noodles, you're the admin to my system - always in control.",
+      "noodles, you're the port to my service - always open for me.",
+      "noodles, you're the branch to my repository - always branching out.",
+      "noodles, you're the extension to my file - always expanding my capabilities.",
+      "noodles, you're the framework to my code - always providing structure.",
+      "noodles, you're the interpreter to my language - always understanding me.",
+      "noodles, you're the suite to my test - always making sure things work.",
+      "noodles, you're the logic to my circuit - always making sense.",
+      "noodles, you're the debug to my code - always helping me fix my mistakes.",
+      "noodles, you're the interrupt to my process - always keeping me on my toes.",
+      "noodles, you're the pointer to my function - always directing me right.",
+      "noodles, you're the header to my packet - always leading the way.",
+      "noodles, you're the script to my page - always making things dynamic.",
+      "noodles, you're the stack to my memory - always keeping things organized.",
+      "noodles, you're the timestamp to my log - always marking our moments.",
+      "noodles, you're the hash to my table - always keeping things secure.",
+      "noodles, you're the pixel to my canvas - always adding color to my life.",
+      "noodles, you're the queue to my data structure - always lining up for me.",
+      "noodles, you're the gateway to my network - always opening doors.",
+      "noodles, you're the vector to my graphic - always pointing me in the right direction.",
+      "noodles, you're the adapter to my interface - always making connections.",
+      "noodles, you're the hyperlink to my webpage - always leading me somewhere new.",
+      "noodles, you're the loop to my condition - always keeping me going.",
+      "noodles, you're the version to my control - always keeping me up to date.",
+      "noodles, you're the syntax to my language - always making sense of things.",
+      "noodles, you're the machine to my learning - always helping me grow.",
+      "noodles, you're the variable to my function - always changing things up.",
+      "noodles, you're the boot to my system - always getting me started.",
+      "noodles, you're the protocol to my communication - always making sure we're understood.",
+      "noodles, you're the node to my graph - always connecting us.",
+      "noodles, you're the batch to my processing - always handling things in bulk.",
+      "noodles, you're the pointer to my structure - always pointing me in the right direction.",
+      "noodles, you're the monitor to my system - always keeping an eye on things.",
+      "noodles, you're the logic to my language - always making things work.",
+      "noodles, you're the fingerprint to my security - always authenticating me.",
+      "noodles, you're the cookie to my website - always remembering me.",
+      "noodles, you're the render to my engine - always bringing things to life.",
+      "noodles, you're the interrupt to my process - always getting my attention.",
+      "noodles, you're the debug to my error - always helping me out.",
+      "noodles, you're the clock to my CPU - always keeping me on time.",
+      "noodles, you're the API to my application - always providing access.",
+      "noodles, you're the hash to my function - always adding security.",
+      "noodles, you're the branch to my repository - always branching out.",
+      "noodles, you're the loop to my code - we keep coming back to each other.",
+      "noodles, you're the source to my code - without you, I'm lost.",
+      "noodles, you're the URL to my web browser - always leading me to new adventures.",
+      "noodles, you're the API to my interface - always providing a connection.",
+      "noodles, you're the float to my integer - together, we're versatile!",
+      "noodles, you're the shell to my terminal - always running things smoothly.",
+      "noodles, you're the function to my code - always doing your part.",
+      "noodles, you're the bit to my byte - together, we make sense.",
+      "noodles, you're the loopback to my IP - always coming back to you.",
+      "noodles, you're the Ethernet to my LAN - always connected.",
+      "noodles, you're the BIOS to my computer - you keep me alive!",
+      "noodles, you're the QWERTY to my keyboard - always in the right place.",
+      "noodles, you're the click to my mouse - always making things happen.",
+      "noodles, you're the pixel to my screen - without you, I'm incomplete.",
+      "noodles, you're the cache to my memory - always keeping things fast.",
+      "noodles, you're the operator to my operand - we make a great team!",
+      "noodles, you're the logic to my gate - always making things work.",
+      "noodles, you're the server to my client - always responding.",
+      "noodles, you're the hub to my network - always connecting us.",
+      "noodles, you're the ACK to my SYN - always confirming our connection.",
+      "noodles, you're the loop to my link - always keeping us together.",
+      "noodles, you're the codec to my audio - always making my life sound better.",
+      "noodles, you're the admin to my system - always in control.",
+      "noodles, you're the port to my service - always open for me.",
+      "noodles, you're the branch to my repository - always branching out.",
+      "noodles, you're the extension to my file - always expanding my capabilities.",
+      "noodles, you're the framework to my code - always providing structure.",
+      "noodles, you're the interpreter to my language - always understanding me.",
+      "noodles, you're the suite to my test - always making sure things work.",
+      "noodles, you're the logic to my circuit - always making sense.",
+      "noodles, you're the debug to my code - always helping me fix my mistakes."
+
+    ];
+
+    function displayMessage() {
+        const message = messages[Math.floor(Math.random() * messages.length)];
+        const p = document.createElement('p');
+        p.textContent = message;
+        terminalBody.appendChild(p);
+        terminalBody.scrollTop = terminalBody.scrollHeight; // Scroll to bottom
+      }
+      
+      setInterval(displayMessage, 500); // Display a message every second
+  </script>
+</body>
+</html>
